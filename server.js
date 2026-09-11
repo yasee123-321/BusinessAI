@@ -50,7 +50,7 @@ app.post("/api/chat", async (req, res) => {
     const response = await openai.responses.create({
       model: process.env.OPENAI_MODEL || "gpt-5.6-luna",
       instructions:
-        "Ø£Ù†Øª BusinessAIØŒ Ù…Ø³Ø§Ø¹Ø¯ Ø£Ø¹Ù…Ø§Ù„ Ø°ÙƒÙŠ. Ø£Ø¬Ø¨ Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠØ© Ø¨Ø´ÙƒÙ„ ÙˆØ§Ø¶Ø­ ÙˆÙ…ÙÙŠØ¯. Ø¥Ø°Ø§ ÙƒØ§Ù† Ø§Ù„Ø³Ø¤Ø§Ù„ ØªÙ‚Ù†ÙŠÙ‹Ø§ØŒ Ø£Ø¹Ø·Ù Ø®Ø·ÙˆØ§Øª Ø¹Ù…Ù„ÙŠØ© ÙˆÙ…Ù†Ø§Ø³Ø¨Ø© Ù„Ù„Ù…Ø¨ØªØ¯Ø¦ÙŠÙ†.",
+        "أنت BusinessAI، مساعد أعمال ذكي. أجب باللغة العربية بشكل واضح ومفيد. إذا كان السؤال تقنيًا، أعطِ خطوات عملية ومناسبة للمبتدئين.",
       input: messages.map((message) => ({
         role: message.role,
         content: message.content
@@ -64,7 +64,7 @@ app.post("/api/chat", async (req, res) => {
     console.error("Chat error:", error);
 
     res.status(500).json({
-      error: "Ø­Ø¯Ø« Ø®Ø·Ø£ Ø£Ø«Ù†Ø§Ø¡ Ø§Ù„Ø§ØªØµØ§Ù„ Ø¨Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ."
+      error: "حدث خطأ أثناء الاتصال بالذكاء الاصطناعي."
     });
   }
 });
