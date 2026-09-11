@@ -1,0 +1,1553 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BusinessAI | Ù…Ø³Ø§Ø¹Ø¯ Ø§Ù„Ø£Ø¹Ù…Ø§Ù„ Ø§Ù„Ø°ÙƒÙŠ</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      background: #0f1117;
+      color: #f5f5f5;
+      line-height: 1.7;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1150px, 92%);
+      margin: auto;
+    }
+
+    /* Header */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 17, 23, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #272b36;
+    }
+
+    .navbar {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #d4a843;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links button {
+      background: transparent;
+      border: 0;
+      color: #ddd;
+      padding: 9px 13px;
+      border-radius: 8px;
+    }
+
+    .nav-links button:hover {
+      background: #242832;
+      color: #fff;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 90px 0 70px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #211d13;
+      color: #d4a843;
+      border: 1px solid #594a25;
+      padding: 7px 15px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 7vw, 72px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #d4a843;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #aeb4c0;
+      font-size: 18px;
+    }
+
+    .hero-buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      border: 0;
+      border-radius: 10px;
+      padding: 13px 22px;
+      font-weight: bold;
+    }
+
+    .primary-btn {
+      background: #d4a843;
+      color: #111;
+    }
+
+    .primary-btn:hover {
+      background: #e3bd5c;
+    }
+
+    .secondary-btn {
+      background: #242832;
+      color: white;
+      border: 1px solid #343a47;
+    }
+
+    /* Sections */
+
+    section {
+      padding: 55px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #9299a6;
+    }
+
+    /* Features */
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .feature {
+      background: #181b23;
+      border: 1px solid #292e39;
+      border-radius: 14px;
+      padding: 22px;
+      transition: 0.2s;
+    }
+
+    .feature:hover {
+      transform: translateY(-4px);
+      border-color: #594a25;
+    }
+
+    .feature-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .feature h3 {
+      margin-bottom: 7px;
+    }
+
+    .feature p {
+      color: #969daa;
+      font-size: 14px;
+    }
+
+    /* Workspace */
+
+    .workspace {
+      background: #151820;
+      border: 1px solid #292e39;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .workspace-header {
+      padding: 17px 20px;
+      border-bottom: 1px solid #292e39;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #9fa6b3;
+      font-size: 13px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #48d597;
+      border-radius: 50%;
+    }
+
+    /* Chat */
+
+    .chat-box {
+      height: 430px;
+      overflow-y: auto;
+      padding: 22px;
+    }
+
+    .message {
+      display: flex;
+      margin-bottom: 18px;
+    }
+
+    .message.user {
+      justify-content: flex-start;
+    }
+
+    .message.ai {
+      justify-content: flex-end;
+    }
+
+    .bubble {
+      max-width: min(760px, 85%);
+      padding: 13px 16px;
+      border-radius: 15px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .user .bubble {
+      background: #d4a843;
+      color: #151515;
+      border-bottom-left-radius: 4px;
+    }
+
+    .ai .bubble {
+      background: #222630;
+      border: 1px solid #303642;
+      border-bottom-right-radius: 4px;
+    }
+
+    .message-actions {
+      margin-top: 9px;
+      display: flex;
+      gap: 7px;
+      direction: rtl;
+    }
+
+    .message-actions button {
+      background: #303642;
+      color: #c9ced7;
+      border: 0;
+      border-radius: 7px;
+      padding: 5px 9px;
+      font-size: 12px;
+    }
+
+    .message-actions button:hover {
+      background: #3a414f;
+    }
+
+    /* Typing */
+
+    .typing {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 3px;
+    }
+
+    .typing span {
+      width: 7px;
+      height: 7px;
+      background: #aeb4c0;
+      border-radius: 50%;
+      animation: typing 1.2s infinite ease-in-out;
+    }
+
+    .typing span:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .typing span:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes typing {
+      0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.35;
+      }
+
+      30% {
+        transform: translateY(-5px);
+        opacity: 1;
+      }
+    }
+
+    /* Chat input */
+
+    .chat-input-area {
+      border-top: 1px solid #292e39;
+      padding: 15px;
+    }
+
+    .chat-input-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    #messageInput {
+      flex: 1;
+      min-height: 50px;
+      max-height: 140px;
+      resize: vertical;
+      background: #0f1117;
+      color: white;
+      border: 1px solid #343a47;
+      border-radius: 10px;
+      padding: 12px;
+      outline: none;
+    }
+
+    #messageInput:focus {
+      border-color: #d4a843;
+    }
+
+    .send-btn {
+      width: 55px;
+      border: 0;
+      border-radius: 10px;
+      background: #d4a843;
+      font-size: 20px;
+    }
+
+    .chat-tools {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .small-btn {
+      background: #242832;
+      color: #ddd;
+      border: 1px solid #343a47;
+      border-radius: 8px;
+      padding: 7px 11px;
+      font-size: 13px;
+    }
+
+    .small-btn:hover {
+      border-color: #d4a843;
+    }
+
+    /* Tools */
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .tool-card {
+      background: #181b23;
+      border: 1px solid #292e39;
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    .tool-card h3 {
+      margin-bottom: 7px;
+    }
+
+    .tool-card p {
+      color: #9299a6;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      background: #0f1117;
+      color: white;
+      border: 1px solid #343a47;
+      border-radius: 9px;
+      padding: 11px;
+      margin-bottom: 10px;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #d4a843;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .tool-result {
+      margin-top: 15px;
+      background: #10131a;
+      border: 1px solid #292e39;
+      border-radius: 10px;
+      padding: 15px;
+      white-space: pre-wrap;
+      display: none;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .tool-result.show {
+      display: block;
+    }
+
+    /* Image */
+
+    .generated-image {
+      margin-top: 15px;
+      display: none;
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid #343a47;
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid #292e39;
+      padding: 30px 0;
+      text-align: center;
+      color: #777f8c;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 850px) {
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 55px;
+      }
+
+      .chat-input-row {
+        flex-direction: column;
+      }
+
+      .send-btn {
+        width: 100%;
+        height: 48px;
+      }
+
+      .bubble {
+        max-width: 92%;
+      }
+    }
+  </style>
+
+<style>
+/* ================= LOGIN SYSTEM ================= */
+
+.login-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.60);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 20px;
+}
+
+.login-overlay.show {
+    display: flex;
+}
+
+.login-box {
+    position: relative;
+    width: min(420px, 100%);
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 30px;
+    box-shadow: 0 25px 80px rgba(0,0,0,.30);
+    animation: loginIn .25s ease;
+}
+
+@keyframes loginIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.login-top {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.login-logo {
+    width: 55px;
+    height: 55px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    background: var(--primary);
+    color: white;
+    font-size: 25px;
+}
+
+.login-top h2 {
+    margin-top: 15px;
+}
+
+.login-top p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.login-form {
+    display: grid;
+    gap: 14px;
+}
+
+.login-field {
+    display: grid;
+    gap: 6px;
+}
+
+.login-field label {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.login-field input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+}
+
+.login-field input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(108,92,231,.10);
+}
+
+.login-submit {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.login-switch {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 17px;
+}
+
+.login-switch button {
+    background: transparent;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.login-close {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--soft);
+    color: var(--text);
+}
+
+.user-menu {
+    display: none;
+    align-items: center;
+    gap: 9px;
+}
+
+.user-name {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.logout-btn {
+    background: transparent;
+    color: var(--danger);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+@media(max-width:600px) {
+    .user-name {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container navbar">
+
+    <div class="logo">
+      BusinessAI
+    </div>
+
+    <nav class="nav-links">
+      <button onclick="scrollToSection('chat')">Ø§Ù„Ù…Ø­Ø§Ø¯Ø«Ø©</button>
+      <button onclick="scrollToSection('tools')">Ø§Ù„Ø£Ø¯ÙˆØ§Øª</button>
+      <button onclick="scrollToSection('image')">Ø§Ù„ØµÙˆØ±</button>
+      <button onclick="scrollToSection('business')">Ø®Ø·Ø© Ø¹Ù…Ù„</button>
+      <button onclick="scrollToSection('cv')">Ø§Ù„Ø³ÙŠØ±Ø© Ø§Ù„Ø°Ø§ØªÙŠØ©</button>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="container">
+
+      <div class="badge">
+        ðŸ¤– Ù…Ø³Ø§Ø¹Ø¯ Ø°ÙƒÙŠ Ù„Ù„Ø£Ø¹Ù…Ø§Ù„ ÙˆØ§Ù„Ø¯Ø±Ø§Ø³Ø©
+      </div>
+
+      <h1>
+        Ø£Ù‡Ù„Ø§Ù‹ Ø¨Ùƒ ÙÙŠ
+        <span>BusinessAI</span>
+      </h1>
+
+      <p>
+        Ù…Ù†ØµØ© Ø°ÙƒØ§Ø¡ Ø§ØµØ·Ù†Ø§Ø¹ÙŠ ØªØ³Ø§Ø¹Ø¯Ùƒ Ø¹Ù„Ù‰ Ø§Ù„Ù…Ø­Ø§Ø¯Ø«Ø©ØŒ
+        ØªØ­Ù„ÙŠÙ„ Ø§Ù„Ù…Ù„ÙØ§Øª ÙˆØ§Ù„ØµÙˆØ±ØŒ Ø¥Ù†Ø´Ø§Ø¡ Ø§Ù„ØµÙˆØ±ØŒ
+        Ø¨Ù†Ø§Ø¡ Ø®Ø·Ø· Ø§Ù„Ø£Ø¹Ù…Ø§Ù„ ÙˆØ¥Ù†Ø´Ø§Ø¡ Ø§Ù„Ø³ÙŠØ± Ø§Ù„Ø°Ø§ØªÙŠØ©.
+      </p>
+
+      <div class="hero-buttons">
+        <button
+          class="primary-btn"
+          onclick="scrollToSection('chat')"
+        >
+          Ø§Ø¨Ø¯Ø£ Ø§Ù„Ù…Ø­Ø§Ø¯Ø«Ø©
+        </button>
+
+        <button
+          class="secondary-btn"
+          onclick="scrollToSection('tools')"
+        >
+          Ø§Ø³ØªÙƒØ´Ù Ø§Ù„Ø£Ø¯ÙˆØ§Øª
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+
+  <section>
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Ù…Ø§Ø°Ø§ ÙŠØ³ØªØ·ÙŠØ¹ BusinessAIØŸ</h2>
+        <p>Ù…Ø¬Ù…ÙˆØ¹Ø© Ø£Ø¯ÙˆØ§Øª Ø°ÙƒÙŠØ© ÙÙŠ Ù…ÙƒØ§Ù† ÙˆØ§Ø­Ø¯</p>
+      </div>
+
+      <div class="features">
+
+        <div class="feature">
+          <div class="feature-icon">ðŸ’¬</div>
+          <h3>Ù…Ø­Ø§Ø¯Ø«Ø© Ø°ÙƒÙŠØ©</h3>
+          <p>
+            ØªØ­Ø¯Ø« Ù…Ø¹ Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ ÙˆØ§Ø­ØµÙ„ Ø¹Ù„Ù‰ Ø¥Ø¬Ø§Ø¨Ø§Øª
+            ÙˆÙ…Ø³Ø§Ø¹Ø¯Ø© ÙÙŠ Ù…Ø®ØªÙ„Ù Ø§Ù„Ù…ÙˆØ§Ø¶ÙŠØ¹.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">ðŸ“š</div>
+          <h3>Ø­Ù„ Ø§Ù„ÙˆØ§Ø¬Ø¨Ø§Øª</h3>
+          <p>
+            Ø§Ø±ÙØ¹ ØµÙˆØ±Ø© Ø£Ùˆ Ù…Ù„ÙÙ‹Ø§ ÙŠØ­ØªÙˆÙŠ Ø¹Ù„Ù‰ Ø£Ø³Ø¦Ù„Ø©
+            ÙˆØ§Ø­ØµÙ„ Ø¹Ù„Ù‰ Ø§Ù„Ø­Ù„ Ù…Ø¹ Ø´Ø±Ø­ Ù…Ø®ØªØµØ±.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">ðŸŽ¨</div>
+          <h3>Ø¥Ù†Ø´Ø§Ø¡ Ø§Ù„ØµÙˆØ±</h3>
+          <p>
+            Ø§ÙƒØªØ¨ ÙÙƒØ±ØªÙƒ ÙˆØ³ÙŠØªÙ… Ø¥Ù†Ø´Ø§Ø¡ ØµÙˆØ±Ø© Ø¨Ø§Ø³ØªØ®Ø¯Ø§Ù…
+            Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">ðŸ“Š</div>
+          <h3>Ø®Ø·Ø© Ø¹Ù…Ù„</h3>
+          <p>
+            Ø­ÙˆÙ‘Ù„ ÙÙƒØ±Ø© Ù…Ø´Ø±ÙˆØ¹Ùƒ Ø¥Ù„Ù‰ Ø®Ø·Ø© Ø¹Ù…Ù„ Ù…Ù†Ø¸Ù…Ø©.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CHAT -->
+
+  <section id="chat">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Ø§Ù„Ù…Ø³Ø§Ø¹Ø¯ Ø§Ù„Ø°ÙƒÙŠ</h2>
+        <p>Ø§ÙƒØªØ¨ Ø³Ø¤Ø§Ù„Ùƒ ÙˆØ§Ø¨Ø¯Ø£ Ø§Ù„Ù…Ø­Ø§Ø¯Ø«Ø©</p>
+      </div>
+
+      <div class="workspace">
+
+        <div class="workspace-header">
+
+          <strong>BusinessAI Assistant</strong>
+
+          <div class="status">
+            <span class="status-dot"></span>
+            Ù…ØªØµÙ„
+          </div>
+
+        </div>
+
+        <div id="chatBox" class="chat-box">
+
+          <div class="message ai">
+            <div class="bubble">
+              Ø£Ù‡Ù„Ø§Ù‹ Ø¨Ùƒ ðŸ‘‹
+              Ø£Ù†Ø§ BusinessAI.
+              ÙƒÙŠÙ ÙŠÙ…ÙƒÙ†Ù†ÙŠ Ù…Ø³Ø§Ø¹Ø¯ØªÙƒ Ø§Ù„ÙŠÙˆÙ…ØŸ
+            </div>
+          </div>
+
+        </div>
+
+        <div class="chat-input-area">
+
+          <div class="chat-input-row">
+
+            <textarea
+              id="messageInput"
+              placeholder="Ø§ÙƒØªØ¨ Ø±Ø³Ø§Ù„ØªÙƒ Ù‡Ù†Ø§..."
+              onkeydown="handleEnter(event)"
+            ></textarea>
+
+            <button
+              class="send-btn"
+              onclick="sendMessage()"
+              title="Ø¥Ø±Ø³Ø§Ù„"
+            >
+              âž¤
+            </button>
+
+          </div>
+
+          <div class="chat-tools">
+
+            <button
+              class="small-btn"
+              onclick="document.getElementById('chatFile').click()"
+            >
+              ðŸ“Ž Ø±ÙØ¹ Ù…Ù„Ù
+            </button>
+
+            <button
+              class="small-btn"
+              onclick="clearChat()"
+            >
+              ðŸ—‘ï¸ Ù…Ø³Ø­ Ø§Ù„Ù…Ø­Ø§Ø¯Ø«Ø©
+            </button>
+
+            <input
+              id="chatFile"
+              type="file"
+              hidden
+              onchange="analyzeChatFile(this)"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+
+  <section id="tools">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Ø£Ø¯ÙˆØ§Øª BusinessAI</h2>
+        <p>Ø£Ø¯ÙˆØ§Øª Ø¥Ø¶Ø§ÙÙŠØ© Ù„Ù…Ø³Ø§Ø¹Ø¯ØªÙƒ ÙÙŠ Ø§Ù„Ø¯Ø±Ø§Ø³Ø© ÙˆØ§Ù„Ø¹Ù…Ù„</p>
+      </div>
+
+      <div class="tools-grid">
+
+        <!-- Homework -->
+
+        <div class="tool-card">
+
+          <h3>ðŸ“š Ù…Ø­Ù„Ù„ Ø§Ù„ÙˆØ§Ø¬Ø¨Ø§Øª</h3>
+
+          <p>
+            Ø§Ø±ÙØ¹ ØµÙˆØ±Ø© Ø£Ùˆ PDF ÙŠØ­ØªÙˆÙŠ Ø¹Ù„Ù‰ Ø£Ø³Ø¦Ù„Ø©.
+          </p>
+
+          <input
+            id="homeworkFile"
+            type="file"
+            accept="image/*,.pdf,.doc,.docx,.txt"
+          >
+
+          <button
+            class="primary-btn"
+            onclick="analyzeHomework()"
+          >
+            ØªØ­Ù„ÙŠÙ„ ÙˆØ­Ù„
+          </button>
+
+          <div
+            id="homeworkResult"
+            class="tool-result"
+          ></div>
+
+        </div>
+
+        <!-- Image -->
+
+        <div
+          class="tool-card"
+          id="image"
+        >
+
+          <h3>ðŸŽ¨ Ù…ÙˆÙ„Ø¯ Ø§Ù„ØµÙˆØ±</h3>
+
+          <p>
+            Ø§ÙƒØªØ¨ ÙˆØµÙ Ø§Ù„ØµÙˆØ±Ø© Ø§Ù„ØªÙŠ ØªØ±ÙŠØ¯ Ø¥Ù†Ø´Ø§Ø¡Ù‡Ø§.
+          </p>
+
+          <textarea
+            id="imagePrompt"
+            placeholder="Ù…Ø«Ø§Ù„: Ù…Ø¯ÙŠÙ†Ø© Ù…Ø³ØªÙ‚Ø¨Ù„ÙŠØ© ÙÙŠ Ø§Ù„Ù„ÙŠÙ„ Ø¨Ø£Ø³Ù„ÙˆØ¨ Ø³ÙŠÙ†Ù…Ø§Ø¦ÙŠ..."
+          ></textarea>
+
+          <select id="imageSize">
+            <option value="1024x1024">
+              Ù…Ø±Ø¨Ø¹ 1024 Ã— 1024
+            </option>
+            <option value="1536x1024">
+              Ø£ÙÙ‚ÙŠ
+            </option>
+            <option value="1024x1536">
+              Ø¹Ù…ÙˆØ¯ÙŠ
+            </option>
+          </select>
+
+          <button
+            class="primary-btn"
+            onclick="generateImage()"
+          >
+            Ø¥Ù†Ø´Ø§Ø¡ Ø§Ù„ØµÙˆØ±Ø©
+          </button>
+
+          <div
+            id="imageStatus"
+            class="tool-result"
+          ></div>
+
+          <img
+            id="generatedImage"
+            class="generated-image"
+            alt="Ø§Ù„ØµÙˆØ±Ø© Ø§Ù„ØªÙŠ ØªÙ… Ø¥Ù†Ø´Ø§Ø¤Ù‡Ø§"
+          >
+
+        </div>
+
+        <!-- Business -->
+
+        <div
+          class="tool-card"
+          id="business"
+        >
+
+          <h3>ðŸ“Š Ù…Ù†Ø´Ø¦ Ø®Ø·Ø© Ø§Ù„Ø£Ø¹Ù…Ø§Ù„</h3>
+
+          <p>
+            Ø£Ø¯Ø®Ù„ Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ù…Ø´Ø±ÙˆØ¹Ùƒ ÙˆØ³Ù†Ù†Ø´Ø¦ Ù„Ùƒ Ø®Ø·Ø© Ù…Ù†Ø¸Ù…Ø©.
+          </p>
+
+          <input
+            id="businessIdea"
+            placeholder="ÙÙƒØ±Ø© Ø§Ù„Ù…Ø´Ø±ÙˆØ¹"
+          >
+
+          <input
+            id="businessBudget"
+            placeholder="Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ©"
+          >
+
+          <input
+            id="businessAudience"
+            placeholder="Ø§Ù„ÙØ¦Ø© Ø§Ù„Ù…Ø³ØªÙ‡Ø¯ÙØ©"
+          >
+
+          <button
+            class="primary-btn"
+            onclick="createBusinessPlan()"
+          >
+            Ø¥Ù†Ø´Ø§Ø¡ Ø®Ø·Ø© Ø§Ù„Ø¹Ù…Ù„
+          </button>
+
+          <div
+            id="businessResult"
+            class="tool-result"
+          ></div>
+
+        </div>
+
+        <!-- CV -->
+
+        <div
+          class="tool-card"
+          id="cv"
+        >
+
+          <h3>ðŸ“„ Ù…Ù†Ø´Ø¦ Ø§Ù„Ø³ÙŠØ±Ø© Ø§Ù„Ø°Ø§ØªÙŠØ©</h3>
+
+          <p>
+            Ø£Ù†Ø´Ø¦ Ø³ÙŠØ±Ø© Ø°Ø§ØªÙŠØ© Ù…Ù†Ø¸Ù…Ø© Ù…Ù† Ù…Ø¹Ù„ÙˆÙ…Ø§ØªÙƒ.
+          </p>
+
+          <input
+            id="cvName"
+            placeholder="Ø§Ù„Ø§Ø³Ù…"
+          >
+
+          <input
+            id="cvEducation"
+            placeholder="Ø§Ù„ØªØ¹Ù„ÙŠÙ…"
+          >
+
+          <input
+            id="cvSkills"
+            placeholder="Ø§Ù„Ù…Ù‡Ø§Ø±Ø§Øª"
+          >
+
+          <input
+            id="cvExperience"
+            placeholder="Ø§Ù„Ø®Ø¨Ø±Ø©"
+          >
+
+          <input
+            id="cvTargetJob"
+            placeholder="Ø§Ù„ÙˆØ¸ÙŠÙØ© Ø§Ù„Ù…Ø³ØªÙ‡Ø¯ÙØ©"
+          >
+
+          <button
+            class="primary-btn"
+            onclick="createCV()"
+          >
+            Ø¥Ù†Ø´Ø§Ø¡ Ø§Ù„Ø³ÙŠØ±Ø© Ø§Ù„Ø°Ø§ØªÙŠØ©
+          </button>
+
+          <div
+            id="cvResult"
+            class="tool-result"
+          ></div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ================= LOGIN MODAL ================= -->
+
+<div class="login-overlay" id="loginOverlay">
+
+    <div class="login-box">
+
+        <button class="login-close" id="loginClose">
+            ✕
+        </button>
+
+        <div class="login-top">
+
+            <div class="login-logo">
+                ✦
+            </div>
+
+            <h2 id="loginTitle">
+                إنشاء حساب
+            </h2>
+
+            <p id="loginSubtitle">
+                أنشئ حسابك في BusinessAI
+            </p>
+
+        </div>
+
+        <form class="login-form" id="loginForm">
+
+            <div class="login-field" id="nameField">
+
+                <label>
+                    الاسم
+                </label>
+
+                <input
+                    type="text"
+                    id="loginName"
+                    placeholder="اكتب اسمك"
+                    required
+                >
+
+            </div>
+
+            <div class="login-field">
+
+                <label>
+                    البريد الإلكتروني
+                </label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="example@email.com"
+                    required
+                >
+
+            </div>
+
+            <div class="login-field">
+
+                <label>
+                    كلمة المرور
+                </label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="كلمة المرور"
+                    required
+                >
+
+            </div>
+
+            <button
+                type="submit"
+                class="button primary login-submit"
+                id="loginSubmit"
+            >
+                إنشاء حساب
+            </button>
+
+        </form>
+
+        <div class="login-switch">
+
+            <span id="switchText">
+                لديك حساب بالفعل؟
+            </span>
+
+            <button id="switchMode">
+                تسجيل الدخول
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<footer>
+  <div class="container">
+    <p>
+      Â© 2026 BusinessAI â€” Ù…Ø³Ø§Ø¹Ø¯ Ø§Ù„Ø£Ø¹Ù…Ø§Ù„ Ø§Ù„Ø°ÙƒÙŠ
+    </p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+
+
+<script>
+
+/* =========================================================
+   BUSINESSAI LOGIN SYSTEM
+========================================================= */
+
+const loginOverlay =
+    document.getElementById("loginOverlay");
+
+const loginBtn =
+    document.getElementById("loginBtn");
+
+const loginClose =
+    document.getElementById("loginClose");
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const loginName =
+    document.getElementById("loginName");
+
+const loginEmail =
+    document.getElementById("loginEmail");
+
+const loginPassword =
+    document.getElementById("loginPassword");
+
+const nameField =
+    document.getElementById("nameField");
+
+const loginTitle =
+    document.getElementById("loginTitle");
+
+const loginSubtitle =
+    document.getElementById("loginSubtitle");
+
+const loginSubmit =
+    document.getElementById("loginSubmit");
+
+const switchMode =
+    document.getElementById("switchMode");
+
+const switchText =
+    document.getElementById("switchText");
+
+const userMenu =
+    document.getElementById("userMenu");
+
+const userName =
+    document.getElementById("userName");
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+let loginMode = "register";
+
+
+/* فتح تسجيل الدخول */
+
+if (loginBtn) {
+
+    loginBtn.addEventListener("click", () => {
+
+        loginOverlay.classList.add("show");
+
+    });
+
+}
+
+
+/* إغلاق النافذة */
+
+if (loginClose) {
+
+    loginClose.addEventListener("click", () => {
+
+        loginOverlay.classList.remove("show");
+
+    });
+
+}
+
+
+/* الضغط خارج النافذة */
+
+if (loginOverlay) {
+
+    loginOverlay.addEventListener("click", event => {
+
+        if (event.target === loginOverlay) {
+
+            loginOverlay.classList.remove("show");
+
+        }
+
+    });
+
+}
+
+
+/* تغيير الوضع */
+
+if (switchMode) {
+
+    switchMode.addEventListener("click", () => {
+
+        if (loginMode === "register") {
+
+            loginMode = "login";
+
+            loginTitle.textContent =
+                "تسجيل الدخول";
+
+            loginSubtitle.textContent =
+                "ادخل إلى حسابك في BusinessAI";
+
+            loginSubmit.textContent =
+                "تسجيل الدخول";
+
+            switchText.textContent =
+                "ليس لديك حساب؟";
+
+            switchMode.textContent =
+                "إنشاء حساب";
+
+            nameField.style.display =
+                "none";
+
+            loginName.required = false;
+
+        } else {
+
+            loginMode = "register";
+
+            loginTitle.textContent =
+                "إنشاء حساب";
+
+            loginSubtitle.textContent =
+                "أنشئ حسابك في BusinessAI";
+
+            loginSubmit.textContent =
+                "إنشاء حساب";
+
+            switchText.textContent =
+                "لديك حساب بالفعل؟";
+
+            switchMode.textContent =
+                "تسجيل الدخول";
+
+            nameField.style.display =
+                "grid";
+
+            loginName.required = true;
+
+        }
+
+    });
+
+}
+
+
+/* إنشاء حساب / تسجيل الدخول */
+
+if (loginForm) {
+
+    loginForm.addEventListener("submit", event => {
+
+        event.preventDefault();
+
+        const name =
+            loginName.value.trim();
+
+        const email =
+            loginEmail.value.trim().toLowerCase();
+
+        const password =
+            loginPassword.value;
+
+        if (!email || !password) {
+
+            showToast(
+                "أدخل البريد الإلكتروني وكلمة المرور"
+            );
+
+            return;
+
+        }
+
+
+        /* إنشاء حساب */
+
+        if (loginMode === "register") {
+
+            if (!name) {
+
+                showToast(
+                    "اكتب اسمك أولًا"
+                );
+
+                return;
+
+            }
+
+            const account = {
+
+                name: name,
+
+                email: email,
+
+                password: password
+
+            };
+
+            localStorage.setItem(
+                "businessai-account",
+                JSON.stringify(account)
+            );
+
+            localStorage.setItem(
+                "businessai-user",
+                JSON.stringify({
+                    name: name,
+                    email: email
+                })
+            );
+
+            loginOverlay.classList.remove(
+                "show"
+            );
+
+            loginForm.reset();
+
+            updateLoginUI();
+
+            showToast(
+                "تم إنشاء حسابك بنجاح ✓"
+            );
+
+            return;
+        }
+
+
+        /* تسجيل الدخول */
+
+        const savedAccount =
+            JSON.parse(
+                localStorage.getItem(
+                    "businessai-account"
+                ) || "null"
+            );
+
+        if (!savedAccount) {
+
+            showToast(
+                "لا يوجد حساب، أنشئ حسابًا أولًا"
+            );
+
+            return;
+
+        }
+
+        if (
+            savedAccount.email !== email ||
+            savedAccount.password !== password
+        ) {
+
+            showToast(
+                "البريد أو كلمة المرور غير صحيحة"
+            );
+
+            return;
+
+        }
+
+        localStorage.setItem(
+            "businessai-user",
+            JSON.stringify({
+                name: savedAccount.name,
+                email: savedAccount.email
+            })
+        );
+
+        loginOverlay.classList.remove(
+            "show"
+        );
+
+        loginForm.reset();
+
+        updateLoginUI();
+
+        showToast(
+            "تم تسجيل الدخول بنجاح ✓"
+        );
+
+    });
+
+}
+
+
+/* تحديث الهيدر */
+
+function updateLoginUI() {
+
+    const user =
+        JSON.parse(
+            localStorage.getItem(
+                "businessai-user"
+            ) || "null"
+        );
+
+    if (user) {
+
+        if (loginBtn) {
+
+            loginBtn.style.display =
+                "none";
+
+        }
+
+        if (userMenu) {
+
+            userMenu.style.display =
+                "flex";
+
+        }
+
+        if (userName) {
+
+            userName.textContent =
+                "مرحبًا، " + user.name;
+
+        }
+
+    } else {
+
+        if (loginBtn) {
+
+            loginBtn.style.display =
+                "inline-flex";
+
+        }
+
+        if (userMenu) {
+
+            userMenu.style.display =
+                "none";
+
+        }
+
+    }
+
+}
+
+
+/* تسجيل الخروج */
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener("click", () => {
+
+        localStorage.removeItem(
+            "businessai-user"
+        );
+
+        updateLoginUI();
+
+        showToast(
+            "تم تسجيل الخروج ✓"
+        );
+
+    });
+
+}
+
+
+/* تشغيل حالة الحساب */
+
+updateLoginUI();
+
+</script>
+</body>
+</html>
