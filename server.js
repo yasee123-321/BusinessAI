@@ -52,7 +52,7 @@ app.post("/api/chat", async (req, res) => {
       instructions:
         "أنت BusinessAI، مساعد أعمال ذكي. أجب باللغة العربية بشكل واضح ومفيد. إذا كان السؤال تقنيًا، أعطِ خطوات عملية ومناسبة للمبتدئين.",
       input: messages.map((message) => ({
-        role: message.role,
+        role: message.role === "ai" ? "assistant" : message.role,
         content: message.content
       }))
     });
